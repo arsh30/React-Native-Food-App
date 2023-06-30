@@ -1,0 +1,40 @@
+import {StyleSheet, Text, View, Dimensions} from 'react-native';
+import React from 'react';
+import {colors, parameters} from '../global/style';
+
+import {Icon} from 'react-native-elements';
+
+const Header = ({title}) => {
+  return (
+    <View style={styles.header}>
+      <View style={{marginLeft: 20}}>
+        <Icon
+          type="font-awesome"
+          name="arrow-left"
+          color={colors.headerText}
+          size={20}
+          onPress={() => {}}
+        />
+      </View>
+      <View>
+        <Text style={styles.headerText}>{title}</Text>
+      </View>
+    </View>
+  );
+};
+
+export default Header;
+
+const styles = StyleSheet.create({
+  header: {
+    flexDirection: 'row',
+    backgroundColor: colors.buttons,
+    height: parameters.headerHeight,
+  },
+  headerText: {
+    color: colors.headerText,
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginLeft: 30,
+  },
+});

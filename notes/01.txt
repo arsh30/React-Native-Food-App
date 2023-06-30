@@ -1,1 +1,30 @@
-a
+React Native CLI
+
+1. Initilize project - npx react-native init projectName
+2. npm i react-native-elements => It is all in one UI Kit [SEARCH THE DOC ALSO FOR THIS]
+3. npm i react-native-vector-icons => It is for icons [already present in react native elements docs in getting started]
+4. npx react-native link react-native-vector-icons [for manual linking, but rn 0.60 above linking is automatically]
+5. npm install react-native-safe-area-context  -> A flexible way to handle safe area, also works on Android and Web!
+
+6. npm i react-native-animatable -> for animations
+
+----------------------------------------------
+
+Create folder -> src 
+                    -> components
+                    -> screens 
+                    -> global [for all the global styling]
+
+----------------------------------------------
+
+Create file -> Header.js in components
+Create file -> styles.js in global
+
+-------------------------------------------------
+
+
+
+
+
+
+
