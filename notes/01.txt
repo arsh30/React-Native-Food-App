@@ -5,13 +5,17 @@ React Native CLI
 3. npm i react-native-vector-icons => It is for icons [already present in react native elements docs in getting started]
 4. npx react-native link react-native-vector-icons [for manual linking, but rn 0.60 above linking is automatically]
 5. npm install react-native-safe-area-context  -> A flexible way to handle safe area, also works on Android and Web!
-
+                                                suppose mobile me notch aate hai aur udr text likha hai to usko udr se 
+                                                htane ke liye we use this, , agr hum ye use ni krte to text cut hojega 
+                                                for eg: https://stackoverflow.com/questions/68778345/react-native-what-is-the-use-of-safeareaprovider
+                                        
+                                    
 6. npm i react-native-animatable -> for animations
 
 ----------------------------------------------
 
 Create folder -> src 
-                    -> components
+                    -> components 
                     -> screens 
                     -> global [for all the global styling]
 
@@ -22,9 +26,110 @@ Create file -> styles.js in global
 
 -------------------------------------------------
 
+Q) How to use react native vector icons ? 
+S) npm i react-native-vector-icons 
+configurations: edit android/app/build.gradle => apply from "../../node_modules/react-native-vector-icons/fonts.gradle" 
+last me paste krdege and rebuild the app
+
+- go to github repository -> lador.github.io/react-native-vector-icons open this tab
+- ye react native vector icons pr le jayega
 
 
+==================================================
+
+1. App.js ->
+
+import {StatusBar, StyleSheet, Text, View} from 'react-native';
+import React from 'react';
+import Header from './src/components/Header';
+import {colors} from './src/global/style';
 
 
+const App = () => {
+  return (
+    <View style={styles.container}>
+      <StatusBar
+        barStyle={'light-content'}
+        backgroundColor={colors.statusBar}
+      />
+      <Header title={'MY ACCOUNT'} />
+    </View>
+  );
+};
+
+export default App;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
+
+===============
+
+2. Header.js ->
+
+import {StyleSheet, Text, View, Dimensions} from 'react-native';
+import React from 'react';
+import {colors, parameters} from '../global/style';
+import Icon from 'react-native-vector-icons/AntDesign';
+
+const Header = ({title}) => {
+  return (
+    <View style={styles.header}>
+      <View style={{marginLeft: 20}}>
+        <Icon
+          name="arrowleft"
+          color={colors.headerText}
+          size={24}
+          onPress={() => {}}
+        />
+      </View>
+
+      <View>
+        <Text style={styles.headerText}>{title}</Text>
+      </View>
+    </View>
+  );
+};
+
+export default Header;
+
+const styles = StyleSheet.create({
+  header: {
+    flexDirection: 'row',
+    backgroundColor: colors.buttons,
+    height: parameters.headerHeight,
+  },
+  headerText: {
+    color: colors.headerText,
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginLeft: 30,
+  },
+});
 
 
+=========================
+
+3. Styles.js ->
+
+export const colors = {
+  buttons: '#ff8c52',
+  grey1: '#43484d',
+  grey2: '#5e6977',
+  grey3: '#86939e',
+  grey4: '#bdc6cf',
+  grey5: '#e1e8ee',
+  cardComment: '#86939e',
+  cardbackground: 'white',
+  statusBar:'#ff8c52',
+  headerText:'white'
+};
+
+export const parameters = {
+  headerHeight: 40,
+};
+
+
+========= finish =======

@@ -1,0 +1,107 @@
+1. App.js ->
+const App = () => {
+  return (
+    <View style={styles.container}>
+      <StatusBar
+        barStyle={'light-content'}
+        backgroundColor={colors.statusBar}
+      />
+      <SigninScreen />
+    </View>
+  );
+};
+
+============
+2. Header.js ->
+const Header = ({title,type}) => {
+  return (
+    <View style={styles.header}>
+      <View style={{marginLeft: 20}}>
+        <Icon
+          name={type}
+          color={colors.headerText}
+          size={24}
+          onPress={() => {}}
+        />
+      </View>
+
+      <View>
+        <Text style={styles.headerText}>{title}</Text>
+      </View>
+    </View>
+  );
+};
+
+===================
+
+3. screens folder -> create folder -> authScreens -> create file SignInScreen.js
+
+3. SignInScreen.js -> 
+
+import Icon from 'react-native-vector-icons/Feather';
+import VisibilityIcon from 'react-native-vector-icons/MaterialIcons';
+import Header from '../../components/Header';
+
+// for animation
+import * as Animatable from 'react-native-animatable';
+//
+
+const SigninScreen = () => {
+  const [textInput2Focussed, setTextInput2Focussed] = useState(false); // initialy value is false
+  const textInput1 = useRef(1); // taki easily input field ko target kar paye
+  const textInput2 = useRef(2); 
+  return (
+    <View style={styles.container}>
+      <Header title={'MY ACCOUNT'} type="arrowleft" />
+
+      <View style={{marginLeft: 20, marginTop: 10}}>
+        <Text style={title}>Sign-In</Text>
+      </View>
+
+      <View style={{alignItems: 'center', marginTop: 10}}>
+        <Text style={styles.text1}>Please Enter the email and Password</Text>
+        <Text style={styles.text1}>Register with your account</Text>
+      </View>
+
+      <View style={{marginTop: 20}}>
+        <View>
+          <TextInput style={styles.TextInput1} placeholder="Email" ref={textInput1}/>
+        </View>
+
+        <View style={styles.TextInput2}>
+          <Animatable.View animation={textInput2Focussed ? "fadeInLeft" : ""} duration={400}>
+            <Icon name="lock" style={{color: colors.grey3}} size={18} ref={textInput2}/>
+          </Animatable.View>
+
+          <TextInput placeholder="Password" style={{width: '80%'}} 
+          onFocus ={() => setTextInput2Focussed(true)} // jese hi is input field par click krege onFocus event triger hoga 
+                                                       // jo value setTextInput2Focussed ki value ko true krra hai, and agr value true hai 
+                                                       // to hi transition dikhegei
+
+          onBlur={() => setTextInput2Focussed(false)} // jese hi is input field ke bhar kahin bhi click krege to onBlur event triger hoga jo value set 
+                                                     // set krwara hai false, so component dubara render hoga toh ab nai dikhega 
+          />
+
+          <Animatable.View animation={textInput2Focussed ? "fadeInLeft" : ""} duration={400}>
+            <VisibilityIcon
+              name="visibility-off"
+              style={{color: colors.grey3, marginRight: 10}}
+              size={18}
+            />
+          </Animatable.View>
+        </View>
+      </View>
+    </View>
+  );
+};
+
+******** REACT NATIVE Animatable *****
+
+1. import * as Animatable from 'react-native-animatable';
+
+NOTE -> Commonly apply on Animatable.View, Animatable.Text, Animatable.Image 
+
+Agr hum apne kisi component me transition apply krna chahte hai toh simply put into 
+Animatable.View 
+
+******************************** FINISH *****************
