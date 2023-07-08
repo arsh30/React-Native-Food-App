@@ -1,0 +1,90 @@
+jb email and Password dalege and sign in krege toh home screen par 
+navigate krjaega.
+
+create a screen ie HomeScreen.js inside Screen folder
+
+1. authNavigator.js -> Added route HomeScreen
+     
+       <Auth.Screen   // ADDED THIS
+        name="HomeScreen"
+        component={HomeScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+    </Auth.Navigator>
+
+
+2. SignInScreen -> Signin buttomn on clicking on that navigate to 
+                    HomeScreen
+
+      <View style={{marginHorizontal:20, marginTop:30}}> // ADDED THIS, TAKI Signin PR CLICK KRE aur HomeScreen par navigate hojaye 
+        <Button title='SIGN IN'
+          buttonStyle = {parameters.styledButton}
+          titleStyle={parameters.buttonTitle}
+          onPress={() => navigation.navigate('HomeScreen')}
+        />
+      </View>
+                
+
+
+3. HomeHeader component -> taki kahin bhi need pde to udr se use krliya 
+
+import React from 'react';
+import MenuBar from 'react-native-vector-icons/MaterialCommunityIcons';
+import {colors, parameters} from '../global/style';
+import {Icon, withBadge} from 'react-native-elements';
+
+const HomePageHeader = () => {
+  const BadgeIcon = withBadge(0)(Icon); // taki cart icon par 0 aajaye, number jo hoga vo dynamic hoga vo aage krege
+                                        // Icon react Native ka use kra hai taki uss icon par number bhi ajaye 
+                                        // 0 ke sath me icon ka name dete hai jispar lgana hai 
+  return (
+    <View style={styles.header}>
+      <View
+        style={{
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginLeft: 15,
+        }}>
+        <MenuBar name="menu" color={colors.cardbackground} size={25} />
+      </View>
+
+      <View style={{alignItems: 'center', justifyContent: 'center'}}>
+        <Text
+          style={{
+            color: colors.cardbackground,
+            fontSize: 20,
+            fontWeight: 'bold',
+          }}>
+          ArshExpressFood
+        </Text>
+      </View>
+
+      <View style={{alignItems: 'center', justifyContent: 'center',marginRight:15}}>
+        <BadgeIcon  // this Icon is from 'react native elements' 
+          type="material-community"
+          name="cart"
+          size={30}
+          color={colors.cardbackground}
+        />
+      </View>
+    </View>
+  );
+};
+
+export default HomePageHeader;
+
+
+4. HomeScreen.js -> 
+
+const HomeScreen = () => {
+  return <View style={styles.container}>
+    <HomePageHeader />
+  </View>;
+};
+
+
+
+=========================== FINISH ================
+

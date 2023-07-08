@@ -58,6 +58,7 @@ const SigninScreen = ({navigation}) => {
         <Button title='SIGN IN'
           buttonStyle = {parameters.styledButton}
           titleStyle={parameters.buttonTitle}
+          onPress={() => navigation.navigate('HomeScreen')}
         />
       </View>
 
@@ -90,7 +91,7 @@ const SigninScreen = ({navigation}) => {
       </View>
 
       <View style={{marginTop:25,marginLeft:20}}> 
-        <Text style={{...styles.text1}}>New on ArshFoodApp?</Text>
+        <Text style={{...styles.text1}}>New on ArshExpressFood?</Text>
       </View>
 
       <View style={{alignItems:'flex-end',marginHorizontal:20}}>
