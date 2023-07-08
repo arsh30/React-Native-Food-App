@@ -3,7 +3,7 @@ import React from 'react';
 import {colors, parameters} from '../global/style';
 import Icon from 'react-native-vector-icons/AntDesign';
 
-const Header = ({title,type}) => {
+const Header = ({title, type, navigation}) => {
   return (
     <View style={styles.header}>
       <View style={{marginLeft: 20}}>
@@ -11,7 +11,9 @@ const Header = ({title,type}) => {
           name={type}
           color={colors.headerText}
           size={24}
-          onPress={() => {}}
+          onPress={() => {
+            navigation.goBack();
+          }}
         />
       </View>
 

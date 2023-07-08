@@ -12,13 +12,13 @@ import * as Animatable from 'react-native-animatable';
 
 //
 
-const SigninScreen = () => {
+const SigninScreen = ({navigation}) => {
   const [textInput2Focussed, setTextInput2Focussed] = useState(false);
   const textInput1 = useRef(1);
   const textInput2 = useRef(2);
   return (
     <View style={styles.container}>
-      <Header title={'MY ACCOUNT'} type="arrowleft" />
+      <Header title={'MY ACCOUNT'} type="arrowleft" navigation={navigation}/>
 
       <View style={{marginLeft: 20, marginTop: 10}}>
         <Text style={title}>Sign-In</Text>

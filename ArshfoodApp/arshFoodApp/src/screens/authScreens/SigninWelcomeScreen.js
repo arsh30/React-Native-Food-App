@@ -6,7 +6,7 @@ import {Button, SocialIcon} from 'react-native-elements';
 
 // for swiper / carousel
 import Swiper from 'react-native-swiper';
-const SigninWelcomeScreen = () => {
+const SigninWelcomeScreen = ({navigation}) => {
   return (
     <View style={{flex: 1}}>
       <View
@@ -70,6 +70,7 @@ const SigninWelcomeScreen = () => {
             title="SIGN IN"
             buttonStyle={parameters.styledButton}
             titleStyle={parameters.buttonTitle}
+            onPress={() => navigation.navigate('SignInScreen')}
           />
         </View>
 

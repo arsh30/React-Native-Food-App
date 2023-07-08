@@ -3,6 +3,7 @@ import React from 'react';
 import {colors} from './src/global/style';
 import SigninScreen from './src/screens/authScreens/SigninScreen';
 import SigninWelcomeScreen from './src/screens/authScreens/SigninWelcomeScreen';
+import RootNavigator from './src/navigation/RootNavigator';
 
 const App = () => {
   return (
@@ -11,8 +12,7 @@ const App = () => {
         barStyle={'light-content'}
         backgroundColor={colors.statusBar}
       />
-      {/* <SigninScreen /> */}
-      <SigninWelcomeScreen />
+      <RootNavigator />
     </View>
   );
 };

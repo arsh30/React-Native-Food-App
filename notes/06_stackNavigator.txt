@@ -1,0 +1,103 @@
+Navigation in this lec -> 
+1. npm install @react-navigation/native
+2. npm install react-native-screens react-native-safe-area-context
+3. npm install @react-navigation/stack
+
+4. npm install @react-navigation/bottom-tabs [from guides]
+5. npm install @react-navigation/drawer
+6. npm install react-native-gesture-handler react-native-reanimated
+
+----------------------------------
+
+src folder -> create folder -> navigation folder create 
+            -> create file inside navigation folder -> authNavigation.js 
+
+
+authNavigation.js -> This is where we going to register for the stack navigation
+                    for our authentication, so we gonna have stack navigation, client navigation,
+                    adming, buisness navigation etc 
+
+1) AuthStack.js -> 
+
+import {StyleSheet, Text, View} from 'react-native';
+import React from 'react';
+
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import SigninWelcomeScreen from '../screens/authScreens/SigninWelcomeScreen';
+import SigninScreen from '../screens/authScreens/SigninScreen';
+
+const Auth = createNativeStackNavigator();
+
+const AuthStack = () => {
+  return (
+    <Auth.Navigator>
+      <Auth.Screen
+        name="SignInWelcomeScreen"
+        component={SigninWelcomeScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+
+      <Auth.Screen
+        name="SignInScreen"
+        component={SigninScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+    </Auth.Navigator>
+  );
+};
+
+export default AuthStack;
+
+const styles = StyleSheet.create({});
+
+
+=========================
+2) RootNavigator.js
+
+import React from 'react'
+import { NavigationContainer } from '@react-navigation/native'
+import AuthStack from './authNavigators'
+
+export default function RootNavigator(){
+    return <NavigationContainer>
+        <AuthStack />
+    </NavigationContainer>
+}
+
+=========================
+
+3. App.js ->
+
+import {StatusBar, StyleSheet, Text, View} from 'react-native';
+import React from 'react';
+import {colors} from './src/global/style';
+import SigninScreen from './src/screens/authScreens/SigninScreen';
+import SigninWelcomeScreen from './src/screens/authScreens/SigninWelcomeScreen';
+import RootNavigator from './src/navigation/RootNavigator';
+
+const App = () => {
+  return (
+    <View style={styles.container}>
+      <StatusBar
+        barStyle={'light-content'}
+        backgroundColor={colors.statusBar}
+      />
+      <RootNavigator />
+    </View>
+  );
+};
+
+export default App;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
+
+
+====================== finish ==========
